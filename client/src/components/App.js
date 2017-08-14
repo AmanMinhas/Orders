@@ -7,6 +7,8 @@ import socketService from '../mods/socket/SocketService';
 import Orders from './Orders';
 import OrderFrequency from './OrderFrequency';
 
+import '../App.css';
+
 class App extends Component {
 	componentWillMount() {
 		this.props.dispatch(ordersActions.fetchOrders());
@@ -28,7 +30,6 @@ class App extends Component {
 
 	_setSocketListeners(socket) {
 		socket.on('se_delete_order', ({ orderId }) => {
-			// const { orderId } = data;
 			this.props.dispatch(ordersActions.deleteOrderSuccess(orderId));
 		})
 	}

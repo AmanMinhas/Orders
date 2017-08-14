@@ -5,13 +5,11 @@ const initialState = {
 export default function api(state = initialState, action = {}) {
     switch (action.type) {
         case 'FETCH_ORDERS_SUCCESS':
-            // console.log('FETCH_ORDERS_SUCCESS ', action);
             return {
                 orders: action.payload,
             };
 
         case 'FETCH_ORDERS_FAILURE':
-            // console.log('FETCH_ORDERS_SUCCESS ', action);
             return {
                 orders: [],
             };

@@ -4,7 +4,6 @@ import './index.css';
 import registerServiceWorker from './registerServiceWorker';
 
 // Import Components
-// import App from './App';
 import App from './components/App';
 
 // Setup Store

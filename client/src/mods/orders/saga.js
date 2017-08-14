@@ -1,10 +1,8 @@
-// eslint-disable-next-line
-import { call, put, takeEvery, takeLatest } from 'redux-saga/effects'
+import { call, put, takeEvery } from 'redux-saga/effects'
 import { checkStatus, getJson } from '../fetch-helpers.js';
 import * as ordersActions from './action.js';
 
 function fetchOrders() {
-	// console.log('FETCH_ORDERS api called');
 	return fetch('/api/orders')
 		.then(checkStatus)
 		.then(getJson)
@@ -12,30 +10,22 @@ function fetchOrders() {
 }
 
 function deleteOrder(id) {
-	// return fetch('/api/delete');
-	// app.route('/api/order/:order_id')
 	return fetch(`/api/order/${id}`, {
 			method: 'delete'
 		})
 		.then(checkStatus)
 		.then(getJson)
-		.then((data) => {
-			console.log('Deleted Data ', data);
-			return data;
-		})
+		.then(data => data);
 }
 
 // worker saga
 function* callFetchOrders(action) {
-	// console.log ('FETCH_ORDERS called');
 	try {
 		const orders = yield call(fetchOrders);
-		// yield put({ type: 'FETCH_ORDERS_SUCCESS', orders })
 		yield put(ordersActions.fetchOrdersSuccess(orders))
 	} catch(e) {
 		// act on error
 		yield put(ordersActions.fetchOrdersFailure())
-		// yield put({ type: 'FETCH_ORDERS_FAILURE' })
 	}
 }
 
@@ -45,7 +35,6 @@ function* callDeleteOrder(action) {
 
 	try {
 		yield call(deleteOrder, orderId);
-		// yield put(ordersActions.deleteOrderSuccess(orderId));
 	} catch(e) {
 		// act on error
 	}

@@ -1,5 +1,3 @@
-// import { checkStatus, getJson } from '../fetch-helpers.js';
-
 export function fetchOrdersSuccess(orders) {
 	return {
 		type: 'FETCH_ORDERS_SUCCESS',
