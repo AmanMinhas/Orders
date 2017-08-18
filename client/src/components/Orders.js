@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { connect } from 'react-redux'
 import AutoSuggestWrapper from './AutoSuggestWrapper';
 import * as ordersActions from '../mods/orders/action.js';
-import '../style/react-autosuggest.css';
+// import '../style/react-autosuggest.css';
 // import socketService from '../mods/socket/SocketService';
 
 class Orders extends Component {
